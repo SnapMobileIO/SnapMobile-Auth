@@ -5,7 +5,7 @@ try {
   module = angular.module('authApp', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('auth/views/forgot.html',
+  $templateCache.put('app/auth/views/forgot.html',
     '<div class="container-fluid">\n' +
     '  <div class="page-header">\n' +
     '    <h1>Forgot Password</h1>\n' +

@@ -30,13 +30,13 @@ app.config($stateProvider => {
   $stateProvider
     .state('login', {
       url: '/login?referrer',
-      templateUrl: 'auth/views/login.html',
+      templateUrl: 'app/auth/views/login.html',
       controller: 'LoginController',
       controllerAs: 'vm'
     })
     .state('logout', {
       url: '/logout',
-      templateUrl: 'auth/views/login.html',
+      templateUrl: 'app/auth/views/login.html',
       controller: ($state, Auth) => {
         Auth.logout();
         $state.go('login');
@@ -44,26 +44,26 @@ app.config($stateProvider => {
     })
     .state('signup', {
       url: '/signup?referrer',
-      templateUrl: 'auth/views/signup.html',
+      templateUrl: 'app/auth/views/signup.html',
       controller: 'SignupController',
       controllerAs: 'vm'
     })
     .state('password', {
       url: '/password',
-      templateUrl: 'auth/views/password.html',
+      templateUrl: 'app/auth/views/password.html',
       controller: 'PasswordController',
       controllerAs: 'vm',
       authenticate: true
     })
     .state('forgot', {
       url: '/forgot',
-      templateUrl: 'auth/views/forgot.html',
+      templateUrl: 'app/auth/views/forgot.html',
       controller: 'ForgotController',
       controllerAs: 'vm'
     })
     .state('reset', {
       url: '/reset/:token',
-      templateUrl: 'auth/views/reset.html',
+      templateUrl: 'app/auth/views/reset.html',
       controller: 'ResetController',
       controllerAs: 'vm'
     });

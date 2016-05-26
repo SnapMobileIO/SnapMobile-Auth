@@ -5,7 +5,7 @@ try {
   module = angular.module('authApp', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('auth/views/login.html',
+  $templateCache.put('app/auth/views/login.html',
     '<div class="container-fluid">\n' +
     '  <div class="page-header">\n' +
     '    <h1>Login</h1>\n' +

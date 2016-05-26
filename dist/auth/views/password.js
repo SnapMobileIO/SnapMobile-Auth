@@ -1,6 +1,11 @@
-var module = angular.module('src/auth/views/password.html', []);
+(function(module) {
+try {
+  module = angular.module('authApp');
+} catch (e) {
+  module = angular.module('authApp', []);
+}
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('src/auth/views/password.html',
+  $templateCache.put('auth/views/password.html',
     '<div class="container">\n' +
     '  <div class="row">\n' +
     '    <div class="col-sm-12">\n' +
@@ -49,3 +54,4 @@ module.run(['$templateCache', function($templateCache) {
     '</div>\n' +
     '');
 }]);
+})();

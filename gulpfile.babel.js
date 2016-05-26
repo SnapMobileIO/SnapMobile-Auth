@@ -12,6 +12,7 @@ import mocha from 'gulp-mocha';
 import jsdoc from 'gulp-jsdoc3';
 import cssimport from 'gulp-cssimport';
 import jscs from 'gulp-jscs';
+import ngHtml2Js from 'gulp-ng-html2js';
 
 function handleError(error) {
   gutil.log(gutil.colors.magenta(error.message));
@@ -20,9 +21,23 @@ function handleError(error) {
 }
 
 gulp.task('babel', function() {
-  return gulp.src(['./src/auth/**/*.js', './src/auth/*', './src/authComponent/*'])
+  gulp.src(['./src/authComponent/*'])
     .pipe(babel({ presets: ['es2015'] }))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./dist/authComponent'))
+    .on('error', handleError)
+  return gulp.src(['./src/auth/*.js'])
+    .pipe(babel({ presets: ['es2015'] }))
+    .pipe(gulp.dest('./dist/auth'))
+    .on('error', handleError);
+});
+
+gulp.task('htmlify', function() {
+  return gulp.src("./src/auth/views/*.html")
+    .pipe(ngHtml2Js({
+      moduleName: "authApp",
+      prefix: "auth/views/"
+    }))
+    .pipe(gulp.dest("./dist/auth/views"))
     .on('error', handleError);
 });
 
@@ -142,3 +157,4 @@ gulp.task('test', ['set-test-node-env', 'mocha']);
 gulp.task('default', ['watch']);
 gulp.task('dev', ['fonts', 'watch', 'start']);
 gulp.task('build', ['browserify', 'fonts', 'sass', 'babel', 'client-dist', 'server-html']);
+gulp.task('dist', ['babel', 'htmlify'])

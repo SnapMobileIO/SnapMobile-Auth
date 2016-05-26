@@ -1,6 +1,11 @@
-var module = angular.module('authApp');
+(function(module) {
+try {
+  module = angular.module('authApp');
+} catch (e) {
+  module = angular.module('authApp', []);
+}
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('src/auth/views/reset.html',
+  $templateCache.put('auth/views/reset.html',
     '<div class="container-fluid">\n' +
     '  <div class="page-header">\n' +
     '    <h1>Reset Your Password</h1>\n' +
@@ -63,3 +68,4 @@ module.run(['$templateCache', function($templateCache) {
     '</div>\n' +
     '');
 }]);
+})();

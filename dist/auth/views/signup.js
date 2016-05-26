@@ -1,6 +1,11 @@
-var module = angular.module('src/auth/views/signup.html', []);
+(function(module) {
+try {
+  module = angular.module('authApp');
+} catch (e) {
+  module = angular.module('authApp', []);
+}
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('src/auth/views/signup.html',
+  $templateCache.put('auth/views/signup.html',
     '<div class="container-fluid">\n' +
     '  <div class="page-header">\n' +
     '    <h1>Login</h1>\n' +
@@ -74,3 +79,4 @@ module.run(['$templateCache', function($templateCache) {
     '</div>\n' +
     '');
 }]);
+})();

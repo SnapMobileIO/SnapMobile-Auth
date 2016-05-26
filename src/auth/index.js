@@ -9,7 +9,7 @@ import { ForgotController } from './forgot.controller';
 import { ResetController } from './reset.controller';
 import { MatchDirective } from './match.directive';
 
-const app = angular.module('app');
+const app = angular.module('app', 'ui.router');
 
 app.service('User', User);
 app.service('Auth', Auth);

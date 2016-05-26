@@ -16,7 +16,7 @@ var _reset = require('./reset.controller');
 
 var _match = require('./match.directive');
 
-var app = angular.module('authApp');
+var app = angular.module('authApp', 'ui.router');
 
 require('./views/forgot.js');
 require('./views/login.js');

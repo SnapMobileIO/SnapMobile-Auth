@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="page-header">
+    <h1>Reset Your Password</h1>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Choose a new password.</h3>
+        </div>
+        <div class="panel-body">
+
+          <form class="form" name="form" ng-submit="vm.resetPassword(form)" novalidate>
+            <p ng-if="vm.message" class="bg-success">{{vm.message}} <a ui-sref="login">Login &rarr;</a></p>
+            <span ng-if="vm.errors">
+              <p ng-repeat="error in vm.errors" class="bg-danger">{{error}}</p>
+            </span>
+
+            <div class="form-group" ng-class="{ 'has-success': form.password.$valid && form.$submitted,
+                                                'has-error': form.password.$invalid && form.$submitted }">
+              <label>Password</label>
+
+              <input type="password" name="password" class="form-control" ng-model="vm.user.password"
+                     ng-minlength="3"
+                     required
+                     mongoose-error/>
+              <p class="help-block"
+                 ng-show="(form.password.$error.minlength || form.password.$error.required) && form.$submitted">
+                Password must be at least 3 characters.
+              </p>
+              <p class="help-block" ng-show="form.password.$error.mongoose">
+                {{vm.errors.password}}
+              </p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && form.$submitted,
+                                                'has-error': form.confirmPassword.$invalid && form.$submitted }">
+              <label>Confirm Password</label>
+              <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
+                     match="vm.user.password"
+                     ng-minlength="3" required/>
+              <p class="help-block"
+                 ng-show="form.confirmPassword.$error.match && form.$submitted">
+                Passwords must match.
+              </p>
+            </div>
+
+            <div>
+              <button class="btn btn-inverse btn-lg btn-login" type="submit">
+                Send
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

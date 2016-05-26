@@ -157,4 +157,4 @@ gulp.task('test', ['set-test-node-env', 'mocha']);
 gulp.task('default', ['watch']);
 gulp.task('dev', ['fonts', 'watch', 'start']);
 gulp.task('build', ['browserify', 'fonts', 'sass', 'babel', 'client-dist', 'server-html']);
-gulp.task('dist', ['babel', 'htmlify'])
+gulp.task('dist', ['babel', 'htmlify']);

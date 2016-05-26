@@ -20,7 +20,7 @@ function handleError(error) {
 }
 
 gulp.task('babel', function() {
-  return gulp.src(['./src/auth/**/*.js', './src/auth/*'])
+  return gulp.src(['./src/auth/**/*.js', './src/auth/*', './src/authComponent/*'])
     .pipe(babel({ presets: ['es2015'] }))
     .pipe(gulp.dest('./'))
     .on('error', handleError);

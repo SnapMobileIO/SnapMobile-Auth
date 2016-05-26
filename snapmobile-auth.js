@@ -2,6 +2,7 @@
 
 require('./auth');
 
+require('./authComponent');
 
 module.exports = {
 

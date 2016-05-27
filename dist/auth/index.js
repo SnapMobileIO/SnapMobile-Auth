@@ -38,10 +38,12 @@ app.config(function ($stateProvider) {
     url: '/login?referrer',
     templateUrl: 'app/auth/views/login.html',
     controller: 'LoginController',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    parent: 'app'
   }).state('logout', {
     url: '/logout',
     templateUrl: 'app/auth/views/login.html',
+    parent: 'app',
     controller: function controller($state, Auth) {
       Auth.logout();
       $state.go('login');
@@ -50,22 +52,26 @@ app.config(function ($stateProvider) {
     url: '/signup?referrer',
     templateUrl: 'app/auth/views/signup.html',
     controller: 'SignupController',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    parent: 'app'
   }).state('password', {
     url: '/password',
     templateUrl: 'app/auth/views/password.html',
     controller: 'PasswordController',
     controllerAs: 'vm',
-    authenticate: true
+    authenticate: true,
+    parent: 'app'
   }).state('forgot', {
     url: '/forgot',
     templateUrl: 'app/auth/views/forgot.html',
     controller: 'ForgotController',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    parent: 'app'
   }).state('reset', {
     url: '/reset/:token',
     templateUrl: 'app/auth/views/reset.html',
     controller: 'ResetController',
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    parent: 'app'
   });
 });

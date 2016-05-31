@@ -3,7 +3,3 @@
 require('./dist/auth');
 
 require('./dist/authComponent');
-
-module.exports = {
-
-}

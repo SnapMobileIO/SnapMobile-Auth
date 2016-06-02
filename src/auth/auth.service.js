@@ -12,11 +12,10 @@ class Auth {
     this.currentUser = null;
 
     // Initial setup for current user
-    if (this.token()) {
-      this.getCurrentUser()
-        .then((response) => {
-          this.setCurrentUser(response.data);
-        });
+    if (!this.isLoggedIn()) {
+      this.initializeCurrentUser(() => {
+
+      });
     }
   }
 
@@ -50,6 +49,16 @@ class Auth {
   logout() {
     this.$cookies.remove('token');
     this.setCurrentUser(null);
+  }
+
+  initializeCurrentUser(callback) {
+    if (this.token()) {
+      this.getCurrentUser()
+        .then((response) => {
+          this.setCurrentUser(response.data);
+          callback();
+        });
+    }
   }
 
   changePassword(oldPassword, newPassword) {

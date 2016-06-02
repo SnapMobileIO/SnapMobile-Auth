@@ -18,24 +18,26 @@ angular.module('AuthModule').run(function (Auth, $rootScope, $state) {
    */
   $rootScope.$on('$stateChangeStart', function (event, toState) {
 
-    /**
-     * If `authenticate: true` is set in state, ensure user is logged in
-     */
-    if (!!toState.authenticate) {
-      if (!Auth.isLoggedIn()) {
-        event.preventDefault();
-        $state.go('login');
+    Auth.initializeCurrentUser(function () {
+      /**
+       * If `authenticate: true` is set in state, ensure user is logged in
+       */
+      if (!!toState.authenticate) {
+        if (!Auth.isLoggedIn()) {
+          event.preventDefault();
+          $state.go('login');
+        }
       }
-    }
 
-    /**
-     * If `authenticateRole: 'role'` is set in state, ensure user is logged in and has the correct role
-     */
-    if (!!toState.authenticateRole && typeof toState.authenticateRole === 'string') {
-      if (!Auth.hasRole(toState.authenticateRole)) {
-        event.preventDefault();
-        $state.go('login');
+      /**
+       * If `authenticateRole: 'role'` is set in state, ensure user is logged in and has the correct role
+       */
+      if (!!toState.authenticateRole && typeof toState.authenticateRole === 'string') {
+        if (!Auth.hasRole(toState.authenticateRole)) {
+          event.preventDefault();
+          $state.go('login');
+        }
       }
-    }
+    });
   });
 });

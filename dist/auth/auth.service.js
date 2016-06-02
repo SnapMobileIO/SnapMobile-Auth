@@ -10,8 +10,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Auth = function () {
   function Auth(User, $http, $cookies, $q, $rootScope) {
-    var _this = this;
-
     _classCallCheck(this, Auth);
 
     // TODO: Move to config
@@ -23,10 +21,8 @@ var Auth = function () {
     this.currentUser = null;
 
     // Initial setup for current user
-    if (this.token()) {
-      this.getCurrentUser().then(function (response) {
-        _this.setCurrentUser(response.data);
-      });
+    if (!this.isLoggedIn()) {
+      this.initializeCurrentUser(function () {});
     }
   }
 
@@ -40,7 +36,7 @@ var Auth = function () {
   _createClass(Auth, [{
     key: 'login',
     value: function login(_ref) {
-      var _this2 = this;
+      var _this = this;
 
       var email = _ref.email;
       var password = _ref.password;
@@ -53,13 +49,13 @@ var Auth = function () {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       }).then(function (response) {
-        _this2.setToken(response.data.token);
-        return _this2.getCurrentUser();
+        _this.setToken(response.data.token);
+        return _this.getCurrentUser();
       }).then(function (response) {
-        _this2.setCurrentUser(response.data);
+        _this.setCurrentUser(response.data);
       }).catch(function (err) {
-        _this2.logout();
-        return _this2.$q.reject(err.data);
+        _this.logout();
+        return _this.$q.reject(err.data);
       });
     }
   }, {
@@ -67,6 +63,18 @@ var Auth = function () {
     value: function logout() {
       this.$cookies.remove('token');
       this.setCurrentUser(null);
+    }
+  }, {
+    key: 'initializeCurrentUser',
+    value: function initializeCurrentUser(callback) {
+      var _this2 = this;
+
+      if (this.token()) {
+        this.getCurrentUser().then(function (response) {
+          _this2.setCurrentUser(response.data);
+          callback();
+        });
+      }
     }
   }, {
     key: 'changePassword',

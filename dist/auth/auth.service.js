@@ -21,9 +21,7 @@ var Auth = function () {
     this.currentUser = null;
 
     // Initial setup for current user
-    if (!this.isLoggedIn()) {
-      this.initializeCurrentUser(function () {});
-    }
+    this.initializeCurrentUser(function () {});
   }
 
   /**
@@ -69,7 +67,7 @@ var Auth = function () {
     value: function initializeCurrentUser(callback) {
       var _this2 = this;
 
-      if (this.token()) {
+      if (!this.isLoggedIn() && this.token()) {
         this.getCurrentUser().then(function (response) {
           _this2.setCurrentUser(response.data);
           callback();

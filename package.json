@@ -9,6 +9,9 @@
     "serve": "node dist/server/app.js",
     "babel-node": "babel-node"
   },
+  "dependencies": {
+    "snapmobile-authserver": "git+ssh://@github.com/SnapMobileIO/SnapMobile-AuthServer.git"
+  },
   "author": "Jack Cable",
   "license": "ISC",
   "devDependencies": {

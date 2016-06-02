@@ -12,11 +12,9 @@ class Auth {
     this.currentUser = null;
 
     // Initial setup for current user
-    if (!this.isLoggedIn()) {
-      this.initializeCurrentUser(() => {
+    this.initializeCurrentUser(() => {
 
-      });
-    }
+    });
   }
 
   /**
@@ -52,7 +50,7 @@ class Auth {
   }
 
   initializeCurrentUser(callback) {
-    if (this.token()) {
+    if (!this.isLoggedIn() && this.token()) {
       this.getCurrentUser()
         .then((response) => {
           this.setCurrentUser(response.data);

@@ -1,4 +1,4 @@
-# SnapMobile-Admin
+# SnapMobile-Auth
 A npm module for basic authentication
 
 # Usage

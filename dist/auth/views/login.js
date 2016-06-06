@@ -47,6 +47,7 @@ module.run(['$templateCache', function($templateCache) {
     '              <div class="col-sm-offset-2 col-sm-10">\n' +
     '                <button class="btn btn-inverse btn-lg btn-login" type="submit">Login</button>\n' +
     '                <a class="btn btn-default btn-lg btn-register" ui-sref="signup({referrer:\'{{vm.referrer}}\'})">Register</a>\n' +
+    '                <a class="btn btn-default btn-lg btn-register" href="/auth/facebook/">Login with Facebook</a>\n' +
     '                <a class="btn btn-default btn-lg btn-register" ui-sref="forgot">Password Reset</a>\n' +
     '              </div>\n' +
     '            </div>\n' +

@@ -29,7 +29,7 @@ class SignupController {
         if (this.referrer) {
           this.$location.url(this.referrer);
         } else {
-          this.$state.go('company-list');
+          this.$location.url('/');
         }
       })
       .catch(err => {

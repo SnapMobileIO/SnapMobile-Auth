@@ -35,7 +35,7 @@ var LoginController = function () {
           if (_this.referrer) {
             _this.$location.url(_this.referrer);
           } else {
-            _this.$state.go('admin-list', { className: 'User' });
+            _this.$location.url('/');
           }
         }).catch(function (err) {
           _this.errors.other = err.message || err.data.message;

@@ -23,7 +23,7 @@ class LoginController {
         if (this.referrer) {
           this.$location.url(this.referrer);
         } else {
-          this.$state.go('admin-list', { className: 'User' });
+          this.$location.url('/');
         }
       })
       .catch(err => {

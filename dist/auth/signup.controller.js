@@ -41,7 +41,7 @@ var SignupController = function () {
           if (_this.referrer) {
             _this.$location.url(_this.referrer);
           } else {
-            _this.$state.go('company-list');
+            _this.$location.url('/');
           }
         }).catch(function (err) {
           _this.errors = {};

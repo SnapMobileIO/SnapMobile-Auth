@@ -49,7 +49,7 @@ app.config(function ($stateProvider) {
       $state.go('login');
     }
   }).state('signup', {
-    url: '/signup?referrer',
+    url: '/signup?referrer&r',
     templateUrl: 'app/auth/views/signup.html',
     controller: 'SignupController',
     controllerAs: 'vm',

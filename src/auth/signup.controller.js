@@ -34,7 +34,7 @@ class SignupController {
       if (this.showReferral) {
         userObject.referralCode = this.user.referralCode;
       }
-      this.User.create()
+      this.User.create(userObject)
       .then((response) => {
         // Set auth token and current user from response
         this.Auth.setToken(response.data.token);

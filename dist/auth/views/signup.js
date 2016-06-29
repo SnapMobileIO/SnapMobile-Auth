@@ -63,6 +63,17 @@ module.run(['$templateCache', function($templateCache) {
     '                </div>\n' +
     '            </div>\n' +
     '\n' +
+    '            <div class="form-group" ng-class="{ \'has-success\': form.referralCode.$valid && form.$submitted, \n' +
+    '                                                \'has-error\': form.referralCode.$invalid && form.$submitted }"\n' +
+    '                                                ng-if="vm.showReferral">\n' +
+    '              <label class="col-sm-2 control-label">Referral Code</label>\n' +
+    '                <div class="col-sm-8">\n' +
+    '                  <input type="text" placeholder="Referral Code" name="referralCode" class="form-control"\n' +
+    '                    ng-model="vm.user.referralCode"\n' +
+    '                    />\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '\n' +
     '            <div class="form-group">\n' +
     '              <div class="col-sm-offset-2 col-sm-10">\n' +
     '                <button class="btn btn-inverse btn-lg btn-login" type="submit">Register</button>\n' +

@@ -9,7 +9,7 @@ Include this private module by adding the following under `dependencies` in `pac
 
 To configure, add the following to `app.js`:
 
-    import 'snapmobile-auth';
+    import auth from 'snapmobile-auth';
     
 Add 'authApp' as a dependency for the angular app.
 

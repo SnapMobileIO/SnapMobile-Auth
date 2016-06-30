@@ -2,7 +2,7 @@
 
 class SignupController {
 
-  constructor(User, Auth, $state, $location, $injector) {
+  constructor(User, Auth, $state, $location) {
     this.user = {};
     this.errors = {};
     this.referrer = $state.params.referrer || null;
@@ -11,30 +11,11 @@ class SignupController {
     this.$state = $state;
     this.$location = $location;
     this.Auth = Auth;
-
-    // optional service to configure referrals
-    try{
-        let signupConfiguration = $injector.get('signupConfiguration');
-        this.showReferral = signupConfiguration.showReferral
-        if (this.showReferral && $state.params.r) {
-          this.user.referralCode = $state.params.r;
-        }
-    } catch(e){
-    }
-
   }
 
   register(form) {
     if (form.$valid) {
-      let userObject = {
-        name: this.user.name,
-        email: this.user.email,
-        password: this.user.password
-      };
-      if (this.showReferral) {
-        userObject.referralCode = this.user.referralCode;
-      }
-      this.User.create(userObject)
+      this.User.create(this.user)
       .then((response) => {
         // Set auth token and current user from response
         this.Auth.setToken(response.data.token);

@@ -9,7 +9,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var SignupController = function () {
-  function SignupController(User, Auth, $state, $location, $injector) {
+  function SignupController(User, Auth, $state, $location) {
     _classCallCheck(this, SignupController);
 
     this.user = {};
@@ -20,15 +20,6 @@ var SignupController = function () {
     this.$state = $state;
     this.$location = $location;
     this.Auth = Auth;
-
-    // optional service to configure referrals
-    try {
-      var signupConfiguration = $injector.get('signupConfiguration');
-      this.showReferral = signupConfiguration.showReferral;
-      if (this.showReferral && $state.params.r) {
-        this.user.referralCode = $state.params.r;
-      }
-    } catch (e) {}
   }
 
   _createClass(SignupController, [{
@@ -37,15 +28,7 @@ var SignupController = function () {
       var _this = this;
 
       if (form.$valid) {
-        var userObject = {
-          name: this.user.name,
-          email: this.user.email,
-          password: this.user.password
-        };
-        if (this.showReferral) {
-          userObject.referralCode = this.user.referralCode;
-        }
-        this.User.create(userObject).then(function (response) {
+        this.User.create(this.user).then(function (response) {
           // Set auth token and current user from response
           _this.Auth.setToken(response.data.token);
           _this.Auth.currentUser = response.data;

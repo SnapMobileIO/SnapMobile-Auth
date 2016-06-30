@@ -13,13 +13,11 @@ To configure, add the following to `app.js`:
     
 Add 'authApp' as a dependency for the angular app.
 
-Finally, call the function `setOverwriteViews` after the initialization of the angular app:
+To overwrite views, call the function `setOverwriteViews` after the initialization of the angular app:
 
-    auth.setOverwriteViews({
-      signup: true
-    });
+    auth.setOverwriteViews(['signup']);
     
-**This function must be called, regardless of whether you overwrite any views**. Pass an empty object if you are not overwriting views. Pass any views you would like to overwrite (login, signup, password, forgot, and reset) and create the html file in `app/auth/views/`.
+Pass any views you would like to overwrite (login, signup, password, forgot, and reset) and create the html file in `app/auth/views/`.
 
 # Updating
 

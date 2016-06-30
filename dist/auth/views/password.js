@@ -5,7 +5,7 @@ try {
   module = angular.module('authApp', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('app/auth/views/password.html',
+  $templateCache.put('authApp/auth/views/password.html',
     '<div class="container">\n' +
     '  <div class="row">\n' +
     '    <div class="col-sm-12">\n' +

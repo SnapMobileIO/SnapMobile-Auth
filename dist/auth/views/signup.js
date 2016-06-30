@@ -5,7 +5,7 @@ try {
   module = angular.module('authApp', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('app/auth/views/signup.html',
+  $templateCache.put('authApp/auth/views/signup.html',
     '<div class="container-fluid">\n' +
     '  <div class="page-header">\n' +
     '    <h1>Login</h1>\n' +
@@ -60,17 +60,6 @@ module.run(['$templateCache', function($templateCache) {
     '                    required />\n' +
     '                  <span class="help-block" ng-show="form.confirmPassword.$error.match && form.$submitted">Passwords must match.</span>\n' +
     '                  <span class="help-block" ng-show="form.confirmPassword.$error.required && form.$submitted">Confirm your password</span>\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <div class="form-group" ng-class="{ \'has-success\': form.referralCode.$valid && form.$submitted, \n' +
-    '                                                \'has-error\': form.referralCode.$invalid && form.$submitted }"\n' +
-    '                                                ng-if="vm.showReferral">\n' +
-    '              <label class="col-sm-2 control-label">Referral Code</label>\n' +
-    '                <div class="col-sm-8">\n' +
-    '                  <input type="text" placeholder="Referral Code" name="referralCode" class="form-control"\n' +
-    '                    ng-model="vm.user.referralCode"\n' +
-    '                    />\n' +
     '                </div>\n' +
     '            </div>\n' +
     '\n' +

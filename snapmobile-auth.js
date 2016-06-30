@@ -1,5 +1,7 @@
 'use strict';
 
-require('./dist/auth');
+var auth = require('./dist/auth');
 
 require('./dist/authComponent');
+
+module.exports = auth;

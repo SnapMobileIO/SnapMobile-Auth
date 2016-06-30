@@ -5,7 +5,7 @@ try {
   module = angular.module('authApp', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('app/auth/views/reset.html',
+  $templateCache.put('authApp/auth/views/reset.html',
     '<div class="container-fluid">\n' +
     '  <div class="page-header">\n' +
     '    <h1>Reset Your Password</h1>\n' +

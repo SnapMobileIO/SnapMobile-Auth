@@ -26,7 +26,7 @@ gulp.task('htmlify', function() {
   return gulp.src("./src/auth/views/*.html")
     .pipe(ngHtml2Js({
       moduleName: "authApp",
-      prefix: "app/auth/views/"
+      prefix: "authApp/auth/views/"
     }))
     .pipe(gulp.dest("./dist/auth/views"))
     .on('error', handleError);

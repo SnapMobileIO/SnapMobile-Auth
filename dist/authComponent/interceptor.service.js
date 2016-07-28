@@ -31,7 +31,7 @@ function AuthInterceptor($q, $cookies, $injector) {
    */
   function responseError(response) {
     if (response.status === 401) {
-      (state || (state = $injector.get('$state'))).go('signup');
+      (state || (state = $injector.get('$state'))).go('login');
 
       // Remove any stale tokens
       $cookies.remove('token');

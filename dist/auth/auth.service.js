@@ -51,6 +51,7 @@ var Auth = function () {
         return _this.getCurrentUser();
       }).then(function (response) {
         _this.setCurrentUser(response.data);
+        _this.$rootScope.$broadcast('event:login-success');
       }).catch(function (err) {
         _this.logout();
         return _this.$q.reject(err.data);

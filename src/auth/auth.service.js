@@ -47,6 +47,7 @@ class Auth {
   logout() {
     this.$cookies.remove('token');
     this.setCurrentUser(null);
+    this.$rootScope.$broadcast('event:logout-success');
   }
 
   initializeCurrentUser(callback) {

@@ -36,8 +36,8 @@ var Auth = function () {
     value: function login(_ref) {
       var _this = this;
 
-      var email = _ref.email;
-      var password = _ref.password;
+      var email = _ref.email,
+          password = _ref.password;
 
       return this.$http({
         url: '/auth/login',
@@ -61,6 +61,7 @@ var Auth = function () {
     value: function logout() {
       this.$cookies.remove('token');
       this.setCurrentUser(null);
+      this.$rootScope.$broadcast('event:logout-success');
     }
   }, {
     key: 'initializeCurrentUser',
@@ -95,8 +96,8 @@ var Auth = function () {
   }, {
     key: 'resetPassword',
     value: function resetPassword(_ref2) {
-      var token = _ref2.token;
-      var password = _ref2.password;
+      var token = _ref2.token,
+          password = _ref2.password;
 
       return this.$http.put('/api/users/me/reset/' + token, { password: password });
     }

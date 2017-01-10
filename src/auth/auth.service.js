@@ -37,6 +37,7 @@ class Auth {
     })
     .then((response) => {
       this.setCurrentUser(response.data);
+      this.$rootScope.$broadcast('event:login-success');
     })
     .catch(err => {
       this.logout();

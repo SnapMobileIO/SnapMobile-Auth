@@ -24,8 +24,8 @@ var User = function () {
   }, {
     key: 'changePassword',
     value: function changePassword(_ref) {
-      var newPassword = _ref.newPassword,
-          oldPassword = _ref.oldPassword;
+      var newPassword = _ref.newPassword;
+      var oldPassword = _ref.oldPassword;
 
       var params = { oldPassword: oldPassword, newPassword: newPassword };
       return this.$http.put('/api/users/me/password', params);

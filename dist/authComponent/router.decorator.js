@@ -16,7 +16,7 @@ angular.module('AuthModule').run(function (Auth, $rootScope, $state) {
    * @param {Object} event    The event that triggered the change
    * @param {Object} toState  The state object information
    */
-  $rootScope.$on('$stateChangeStart', function (event, toState) {
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
 
     Auth.initializeCurrentUser(function () {
       /**
@@ -25,6 +25,12 @@ angular.module('AuthModule').run(function (Auth, $rootScope, $state) {
       if (!!toState.authenticate) {
         if (!Auth.isLoggedIn()) {
           event.preventDefault();
+
+          // Set redirect state and params to be used as redirect
+          // after login if needed
+          Auth.redirectState = toState;
+          Auth.redirectParams = toParams;
+
           $state.go('login');
         }
       }

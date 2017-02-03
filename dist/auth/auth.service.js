@@ -12,13 +12,14 @@ var Auth = function () {
   function Auth(User, $http, $cookies, $q, $rootScope) {
     _classCallCheck(this, Auth);
 
-    // TODO: Move to config
     this.$http = $http;
     this.$cookies = $cookies;
     this.$q = $q;
     this.$rootScope = $rootScope;
     this.User = User;
     this.currentUser = null;
+    this.redirectState = null;
+    this.redirectParams = null;
 
     // Initial setup for current user
     this.initializeCurrentUser(function () {});
@@ -36,8 +37,8 @@ var Auth = function () {
     value: function login(_ref) {
       var _this = this;
 
-      var email = _ref.email,
-          password = _ref.password;
+      var email = _ref.email;
+      var password = _ref.password;
 
       return this.$http({
         url: '/auth/login',
@@ -74,6 +75,8 @@ var Auth = function () {
           _this2.setCurrentUser(response.data);
           callback();
         });
+      } else {
+        callback();
       }
     }
   }, {
@@ -97,8 +100,8 @@ var Auth = function () {
   }, {
     key: 'resetPassword',
     value: function resetPassword(_ref2) {
-      var token = _ref2.token,
-          password = _ref2.password;
+      var token = _ref2.token;
+      var password = _ref2.password;
 
       return this.$http.put('/api/users/me/reset/' + token, { password: password });
     }

@@ -3,13 +3,14 @@
 class Auth {
 
   constructor(User, $http, $cookies, $q, $rootScope) {
-    // TODO: Move to config
     this.$http = $http;
     this.$cookies = $cookies;
     this.$q = $q;
     this.$rootScope = $rootScope;
     this.User = User;
     this.currentUser = null;
+    this.redirectState = null;
+    this.redirectParams = null;
 
     // Initial setup for current user
     this.initializeCurrentUser(() => {
@@ -58,6 +59,8 @@ class Auth {
           this.setCurrentUser(response.data);
           callback();
         });
+    } else {
+      callback();
     }
   }
 

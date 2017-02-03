@@ -45,7 +45,7 @@ app.config(($stateProvider) => {
       }
     })
     .state('signup', {
-      url: '/signup?referrer&r',
+      url: '/signup?referrer&email&firstName&lastName',
       templateUrl: 'authApp/auth/views/signup.html',
       controller: 'SignupController',
       controllerAs: 'vm',

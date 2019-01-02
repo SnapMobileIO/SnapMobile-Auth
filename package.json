@@ -10,7 +10,7 @@
     "babel-node": "babel-node"
   },
   "dependencies": {
-    "snapmobile-authserver": "git+https://37327d5496e19922f3042f023495176af24ba924:x-oauth-basic@github.com/SnapMobileIO/SnapMobile-AuthServer.git"
+    "snapmobile-authserver": "git+https://github.com/SnapMobileIO/SnapMobile-AuthServer.git"
   },
   "author": "Jack Cable",
   "license": "ISC",
